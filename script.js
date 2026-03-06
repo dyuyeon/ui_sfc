@@ -9,11 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const imageScaleSlider = document.getElementById('imageScale');
     const resetImageBtn = document.getElementById('resetImage');
 
-    // Removed frame bg controls
-
     const textTitleInput = document.getElementById('textTitle');
-
-
 
     const downloadBtn = document.getElementById('downloadBtn');
 
