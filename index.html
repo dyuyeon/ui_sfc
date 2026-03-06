@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>우이센터 인스타 표지 생성기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 상단 헤더 영역 추가 -->
+        <header class="app-header">
+            <div class="header-left">
+                <img src="sfc.gif" alt="SFC 로고" class="header-logo">
+                <div class="header-text">
+                    <span class="header-subtitle">2026 UISFC</span>
+                    <h1 class="header-title">인스타 표지 생성기</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="preview">
+            <canvas id="canvas" width="1080" height="1350"></canvas>
+        </div>
+
+        <div class="controls-container">
+            <div class="panels-wrapper">
+                <div class="panel">
+                    <div class="control-group">
+                        <label for="imageLoader">1. 사진 업로드</label>
+                        <input type="file" id="imageLoader" accept="image/*">
+                        <p class="panel-desc">프레임에 넣을 사진을 선택하세요.</p>
+                    </div>
+                </div>
+
+                <!-- Removed panel 2 -->
+
+                <div class="panel">
+                    <div class="control-group">
+                        <label>2. 사진 위치/크기 조정</label>
+                        <span>좌우 이동:</span> <input type="range" id="imageX" min="-300" max="300" value="0">
+                        <span>상하 이동:</span> <input type="range" id="imageY" min="-300" max="300" value="0">
+                        <span>확대/축소:</span> <input type="range" id="imageScale" min="0.1" max="3" value="1" step="0.01">
+                        <button id="resetImage">위치/크기 초기화</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="control-group">
+                        <label>3. 제목 입력</label>
+                        <textarea id="textTitle" placeholder="큰모임 #1"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="panel">
+                    <div class="control-group">
+                        <label>🎉 완성!</label>
+                        <button id="downloadBtn">🖼️ 이미지 저장하기</button>
+                        <p class="panel-desc">완성된 이미지를 휴대폰에 저장하세요.</p>
+                    </div>
+                </div>
+
+                <div class="footer-credit">
+                    <span class="header-credit">Made by Juyoung Han w/ ❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

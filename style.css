@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+@font-face {
+    font-family: 'SB Bold';
+    src: url('./SB Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SB Medium';
+    src: url('./SB Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SB Light';
+    src: url('./SB Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --header-height: 80px;
+    /* 헤더 영역 높이 지정 */
+    --preview-height: calc(60vh - 80px);
+    /* 전체 60vh에서 헤더 높이만큼 뺌 */
+    --controls-height: 40vh;
+    /* 설정 영역 높이 */
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* 전체 페이지 스크롤 방지 */
+    font-family: 'SB Light', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+}
+
+/* --- 상단 헤더 영역 --- */
+.app-header {
+    height: var(--header-height);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center; /* 로고와 제목을 가운데 정렬하거나 유동적으로 배치 */
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* 회색 화면과 구분되는 그림자 */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 40px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-subtitle {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.header-title {
+    font-family: 'SB Medium', sans-serif;
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.footer-credit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.header-credit {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.75rem;
+    color: #95a5a6;
+    /* 은은한 회색 */
+    font-weight: 400;
+}
+
+/* --- 중앙 미리보기 영역 --- */
+.preview {
+    height: var(--preview-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+canvas {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- 하단 설정 영역 --- */
+.controls-container {
+    height: var(--controls-height);
+    background-color: #ffffff;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    padding-top: 25px;
+    /* 핸들 공간 */
+    scrollbar-width: none;
+}
+
+/* 바텀 시트 핸들 추가 */
+.controls-container::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 5px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.controls-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari 스크롤바 숨김 */
+}
+
+.panels-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 30px;
+}
+
+.panel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.panel:last-child {
+    border-bottom: none;
+}
+
+.control-group {
+    width: 100%;
+    max-width: 400px;
+}
+
+.control-group label {
+    display: block;
+    font-family: 'SB Medium', sans-serif;
+    font-weight: normal;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.panel-desc {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: 15px;
+}
+
+/* --- UI 요소 스타일링 --- */
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 60px;
+    /* 적당한 높이로 설정 */
+    line-height: 1.5;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #ffffff;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #3498db, #8e44ad);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#resetImage {
+    background: #7f8c8d;
+    font-size: 0.8rem;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-left: 8px;
+    margin-right: 20px;
+}
+
+.radio-group input,
+.checkbox-group input {
+    transform: scale(1.2);
+}
